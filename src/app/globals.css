@@ -150,7 +150,7 @@ img {
 
 .landing-hero-figma {
   position: relative;
-  min-height: 920px;
+  min-height: 750px;
   overflow: hidden;
   border-radius: 28px;
   background: linear-gradient(180deg, #eff4ff 0%, #e6edff 100%);
@@ -182,7 +182,7 @@ img {
 
 .landing-hero-figma__overlay-image {
   mix-blend-mode: multiply;
-  opacity: 0.75;
+  object-fit: cover;
 }
 
 .landing-hero-figma__content,
@@ -278,13 +278,13 @@ img {
 }
 
 .landing-hero-badge--comfort {
-  top: 562px;
+  top: 460px;
   right: 320px;
   transform: rotate(5deg);
 }
 
 .landing-hero-badge--secure {
-  top: 632px;
+  top: 524px;
   right: 220px;
   transform: rotate(-11deg);
 }
@@ -300,6 +300,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
+  z-index: 5;
 }
 
 .landing-hero-card__image,
@@ -373,6 +374,7 @@ img {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
+  z-index: 5;
 }
 
 .landing-hero-stats span {
@@ -390,18 +392,26 @@ img {
 
 .landing-hero-figma__car {
   position: absolute;
-  left: 50%;
-  bottom: -4px;
-  width: min(920px, 66%);
-  height: auto;
-  transform: translateX(-50%);
-  object-fit: contain;
+    left: 50%;
+    bottom: 26px;
+    width: 630px;
+    height: auto;
+    transform: translateX(-47%);
+    object-fit: contain;
 }
 
 .landing-section {
   padding: 36px 0;
 }
-
+.landing-safety-photo {
+    height: 280px;
+}
+.landing-mini-card .landing-mini-card__icon {
+    display: none;
+}
+.landing-city-feature__content a.landing-button.landing-button--primary {
+    width: max-content;
+}
 .landing-section-copy__eyebrow,
 .landing-style-heading p,
 .landing-rides-heading p,
@@ -410,15 +420,18 @@ img {
 .landing-phone-cta__content > p:first-child {
   color: var(--landing-primary);
   font-size: 1rem;
+  margin-bottom:10px ;
 }
 
 .landing-section-copy {
   display: grid;
-  grid-template-columns: minmax(0, 560px) minmax(0, 700px);
+  grid-template-columns: minmax(0, 764px) minmax(0, 530px);
   gap: 32px;
   align-items: end;
 }
-
+.carIcon {
+    margin-bottom: 20px;
+}
 .landing-section-copy h2,
 .landing-rides-heading h2,
 .landing-style-heading h2,
@@ -427,7 +440,7 @@ img {
 .landing-future__headline h2,
 .landing-app-showcase__heading h2 {
   color: #1f1f1f;
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
   line-height: 0.98;
   letter-spacing: -0.05em;
 }
@@ -464,37 +477,133 @@ img {
 .landing-benefit-card,
 .landing-mini-card {
   padding: 28px;
-  border-radius: 20px;
+  border-radius: 30px;
   background: #f0f3fa;
 }
-
+.landing-benefit-card__icon img {
+    height: 100%;
+    width: auto;
+}
 .landing-benefit-card__icon,
 .landing-mini-card__icon,
 .landing-ride-pill__icon {
   width: 22px;
   height: 22px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #0032bd, #5a87ff);
 }
-
+.first-blue-card{
+  background: url(../assets/rectanglebox.png) no-repeat;
+}
 .landing-benefit-card__icon {
-  width: 54px;
-  height: 54px;
-  margin-bottom: 52px;
+  width: auto;
+  height: 50px;
+  margin-bottom: 35px;
   border-radius: 16px;
 }
-
+.first-blue-card h3, .first-blue-card p {
+    color: #fff;
+}
 .landing-benefit-card h3,
 .landing-mini-card h3,
 .landing-safety-intro h3 {
-  color: #1f1f1f;
+  color: #0032BD;
   font-size: 1.7rem;
   line-height: 1.06;
 }
-
+.main-landing-rides-heading h2 {
+    color: #0032BD;
+    font-size: 108px;
+    text-transform: uppercase;
+}
+.perfectBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.perfectBox p {
+    width: 530px;
+}
 .landing-benefit-card p,
 .landing-mini-card p {
   margin-top: 16px;
+}
+/* Container jo scrolling handle karega mobile par */
+
+.landing-ride-grid {
+  display: flex;
+  gap: 20px;
+  padding: 20px 10px;
+  scrollbar-width: thin; /* Scrollbar ko thoda patla karne ke liye */
+}
+.landing-ride-card__footer {
+    width: 100%;
+}
+.landing-ride-card {
+  /* Aapki batayi hui dimensions */
+  width: 322px;
+  height: 344px;
+  flex-shrink: 0; /* Taake box squeeze na ho */
+  
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 24px; /* Image ke mutabiq zyada rounded */
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Isse button hamesha niche rahega */
+  transition: all 0.3s ease;
+}
+
+/* First box styling */
+.active-card {
+  border: 2px solid #2563eb;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+}
+
+.landing-ride-card__image {
+  flex: 1; /* Space occupy karega */
+  display: flex;
+  align-items: center;
+}
+
+.landing-ride-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #64748b;
+}
+
+.feature-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.landing-ride-pill {
+  width: 100%;
+  height: 54px; /* Button ko thoda bada aur prominent banaya */
+  border-radius: 40px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.active-card .landing-ride-pill {
+  border-color: #3b82f6;
+  background: #eff6ff;
 }
 
 .landing-driver-photo,
@@ -522,13 +631,12 @@ img {
   gap: 12px;
   margin-top: 24px;
 }
-
+.landing-ride-card__image img {
+    width: 200px;
+    height: 100px;
+}
 .landing-ride-pill {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 10px;
-  min-height: 88px;
   padding: 14px 10px;
   border: 1px solid rgba(0, 50, 189, 0.14);
   border-radius: 18px;
@@ -543,7 +651,7 @@ img {
 .landing-safety-grid,
 .landing-style-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.75fr 0.75fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
   margin-top: 18px;
 }
@@ -632,12 +740,12 @@ img {
 }
 
 .landing-city-feature {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 24px;
-  padding: 18px;
-  border-radius: 20px;
-  background: #f0f3fa;
+    display: grid;
+    grid-template-columns: 550px 620px;
+    gap: 64px;
+    padding: 35px;
+    border-radius: 20px;
+    background: #f0f3fa;
 }
 
 .landing-city-feature__content {
@@ -649,22 +757,31 @@ img {
 
 .landing-mini-card--blue {
   color: #fff;
-  background: linear-gradient(135deg, #0d2fbe, #456fff);
+  background:url(../assets/rectanglebox.png) no-repeat;
+  background-size: cover;
 }
-
+article.landing-mini-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.landing-mini-card h3 {
+    margin-bottom: 10px;
+}
 .landing-mini-card--blue h3,
 .landing-mini-card--blue p {
   color: #fff;
 }
 
 .landing-phone-cta {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  align-items: center;
-  gap: 24px;
-  padding: 26px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #eff4ff 0%, #e6edff 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: 24px;
+    padding: 40px 35px 226px 40px;
+    border-radius: 20px;
+    background: url(/_next/static/media/mobileApplication.e46e364e.png) no-repeat;
+    background-size: 100%;
 }
 
 .landing-phone-cta__content h2 {
@@ -761,13 +878,16 @@ img {
   display: grid;
   grid-template-columns: 40px 1fr 20px;
   align-items: center;
-  gap: 14px;
+  gap: 24px;
   color: #1f1f1f;
 }
 
 .landing-future-item__top span {
   color: var(--landing-primary);
   font-weight: 700;
+  font-style: italic;
+  font-size: 120px;
+  font-size: 36px;
 }
 
 .landing-future-item__top strong {
@@ -782,7 +902,7 @@ img {
 
 .landing-future-item p {
   margin-top: 10px;
-  padding-left: 54px;
+  padding-left: 64px;
 }
 
 .landing-future__image {
@@ -794,18 +914,14 @@ img {
   padding: 24px 0 44px;
 }
 
-.landing-footer {
-  padding: 0 0 28px;
-}
-
 .landing-footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  padding: 40px 28px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #022995 0%, #0032bd 60%, #174eff 100%);
-  box-shadow: var(--landing-shadow);
+    grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
+    padding: 80px 60px;
+    border-radius: 28px;
+    background: url(../assets/footerBg.png) no-repeat;
+    background-size: 100%;
+    box-shadow: var(--landing-shadow);
+    height: 650px;
 }
 
 .landing-brand--footer,
@@ -829,6 +945,94 @@ img {
   display: grid;
   gap: 10px;
   color: rgba(255, 255, 255, 0.76);
+}
+
+
+.landing-footer {
+  color: white;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+
+.footer-brand-section {
+  flex: 1.2;
+}
+
+.footer-links-container {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for links */
+  gap: 20px;
+}
+
+.landing-brand span {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: lowercase;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-col-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.landing-footer__links {
+  list-style: none;
+  padding: 0;
+}
+
+.landing-footer__links li {
+  margin-bottom: 12px;
+}
+
+.landing-footer__links a {
+  color: rgba(255, 255, 255, 0.7); /* Slightly faded white */
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+.landing-footer__links a:hover {
+  color: white;
+}
+
+.social-icons-row {
+  display: flex;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-circle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-details p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+.footer-brand-section {
+    float: left;
+    margin-right: 30px;
+    width: 360px;
 }
 
 @media (max-width: 1180px) {
@@ -960,3 +1164,5 @@ img {
     gap: 18px;
   }
 }
+
+

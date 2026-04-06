@@ -1,5 +1,24 @@
 ﻿import { LandingFooter } from "./LandingFooter";
 import { LandingHeader } from "./LandingHeader";
+import Image from "next/image";
+import instantpayment from "../../assets/icons/instantpayment.png";
+import flexibility from "../../assets/icons/flexibility.png";
+import reliable from "../../assets/icons/reliable.png";
+import user from "../../assets/icons/user.svg";
+import zap from "../../assets/icons/zap.svg";
+import car1 from "../../assets/car1.png";
+import car2 from "../../assets/car2.png";
+import car3 from "../../assets/car3.png";
+import car4 from "../../assets/car4.png";
+import car5 from "../../assets/car5.png";
+import car6 from "../../assets/car6.png";
+import Support from "../../assets/Support.png";
+import Track from "../../assets/track.png";
+import carRectangle from "../../assets/carRectangle.png";
+import userRide from "../../assets/userRide.png";
+import carUser from "../../assets/carUser.png";
+import HeroBG from "../../assets/HeroBG.png";
+
 
 const assets = {
   heroBackdrop: "https://www.figma.com/api/mcp/asset/afdb11e3-194a-4ebc-a248-77aa0626fe18",
@@ -15,42 +34,107 @@ const assets = {
   cityCar: "https://www.figma.com/api/mcp/asset/c90d745b-fdbb-4c98-beb8-acbe09c1c8c1",
   luxuryRide: "https://www.figma.com/api/mcp/asset/ff4e62b8-37ea-475e-8218-4eaab4337bb3",
   phoneLady: "https://www.figma.com/api/mcp/asset/26b88e37-ccae-460e-9f49-b52b8453b36b",
-  futureCar: "https://www.figma.com/api/mcp/asset/521ddefc-7b0c-4a39-9393-4611a98f47b0",
+  futureCar: carUser,
+  carRectangle: carRectangle,
+  userRide:userRide,
+  HeroBG:HeroBG,
 };
 
+// const rideOptions = [
+//   "Bike",
+//   "Mini",
+//   "Sedan",
+//   "Comfort",
+//   "Electric",
+//   "XL",
+//   "Premium",
+// ];
 const rideOptions = [
-  "Bike",
-  "Mini",
-  "Sedan",
-  "Comfort",
-  "Electric",
-  "XL",
-  "Premium",
+  { 
+    id: 1, 
+    title: 'Saver', 
+    features: [
+      { text: 'Efficient', icon: zap },       // Bolt/Flash icon
+      { text: 'Private', icon: user }
+    ], 
+    icon: car1 
+  },
+  { 
+    id: 2, 
+    title: 'Standard', 
+    features: [
+      { text: 'Efficient', icon: zap },       // Bolt/Flash icon
+      { text: 'Private', icon: user }
+    ], 
+    icon: car2
+  },
+  { 
+    id: 3, 
+    title: 'Comfort', 
+    features: [
+     { text: 'Efficient', icon: zap },       // Bolt/Flash icon
+      { text: 'Private', icon: user }
+    ], 
+    icon: car3 
+  },
+  { 
+    id: 4, 
+    title: 'Priority Pickup', 
+    features: [
+      { text: 'Efficient', icon: zap },       // Bolt/Flash icon
+      { text: 'Private', icon: user }
+    ], 
+    icon: car4 
+  },
+  { 
+    id: 5, 
+    title: 'XL', 
+    features: [
+      { text: 'Efficient', icon: zap },       // Bolt/Flash icon
+      { text: 'Private', icon: user }
+    ], 
+    icon: car5
+  },
+  { 
+    id: 6, 
+    title: 'Premium', 
+    features: [
+      { text: 'Efficient', icon: zap },       // Bolt/Flash icon
+      { text: 'Private', icon: user }
+    ], 
+    icon: car6
+  }
 ];
-
 const driverBenefits = [
   {
     title: "Reliable Income",
     text: "Build a steady source of income with every ride and predictable payouts.",
+    icon: reliable,
   },
   {
-    title: "Flexible Schedule",
+    title: "Flexibility",
     text: "Drive around your routine. No rigid commitments, just freedom to earn.",
+    icon: flexibility,
   },
   {
     title: "Instant Payments",
     text: "Get paid faster after completed trips when you need your earnings most.",
+    icon: instantpayment,
   },
 ];
 
 const safetyCards = [
   {
+    id: 1,
     title: "24/7 Incident Support",
     text: "Dedicated help and monitored journeys keep every trip supported from start to finish.",
+    icon: "Support", // Aapka Support icon
   },
   {
+    id: 2,
     title: "Track My Ride",
     text: "Live trip tracking and ride sharing make arrivals easier to follow in real time.",
+    icon: "Track", // Aapka Track icon
   },
 ];
 
@@ -80,12 +164,12 @@ const appCards = [
 const comfortCards: Array<{ title: string; text: string; tone: "blue" | "light"; }> = [
   {
     title: "Reclaim Your Commute",
-    text: "Polished interiors, reliable pickups and calm trips make busy days feel smoother.",
+    text: "Elevate your travel with service designed to make traveling relaxing and comfortable. Experience a smoother, more enjoyable commute with  features focused on your convenience and ease. Discover a better way to  get there with us",
     tone: "blue",
   },
   {
     title: "Your Ride, Your Way",
-    text: "Choose the comfort level, timing and trip style that fits your routine best.",
+    text: "Transform  your daily commute with a service designed for ultimate relaxation and  comfort. Enjoy a seamless, stress-free journey that elevates your travel experience and enhances your everyday life.",
     tone: "light",
   },
 ];
@@ -139,17 +223,21 @@ function AppShowcaseCard({
 function MiniInfoCard({
   title,
   text,
+  icon,
   tone = "light",
 }: {
   title: string;
   text: string;
+  icon: React.ReactNode;
   tone?: "light" | "blue";
 }) {
   return (
     <article className={`landing-mini-card landing-mini-card--${tone}`}>
       <div className="landing-mini-card__icon" aria-hidden="true" />
+      <div className="carIcon">{icon}</div>
       <h3>{title}</h3>
       <p>{text}</p>
+      
     </article>
   );
 }
@@ -163,8 +251,7 @@ export function LandingPage() {
         <section className="landing-hero landing-hero--figma">
           <div className="landing-shell landing-hero-figma">
             <div className="landing-hero-figma__bg">
-              <img src={assets.heroBackdrop} alt="" aria-hidden="true" className="landing-hero-figma__bg-image" />
-              <img src={assets.heroOverlay} alt="" aria-hidden="true" className="landing-hero-figma__overlay-image" />
+              <Image src={assets.HeroBG} alt="" aria-hidden="true" className="landing-hero-figma__overlay-image" />
             </div>
 
             <div className="landing-hero-figma__content">
@@ -229,9 +316,15 @@ export function LandingPage() {
 
             <div className="landing-driver-grid">
               <div className="landing-benefit-grid">
-                {driverBenefits.map((item) => (
-                  <article key={item.title} className="landing-benefit-card">
-                    <div className="landing-benefit-card__icon" aria-hidden="true" />
+                {driverBenefits.map((item, index) => (
+                  <article 
+                    key={item.title} 
+                    className={`landing-benefit-card ${index === 0 ? 'first-blue-card' : ''}`}
+                  >
+                    <div className="landing-benefit-card__icon">
+                      <Image src={item.icon} alt={item.title} width={40} height={40} />
+                    </div>
+
                     <h3>{item.title}</h3>
                     <p>{item.text}</p>
                   </article>
@@ -246,32 +339,70 @@ export function LandingPage() {
 
         <section className="landing-section landing-section--rides" id="ride">
           <div className="landing-shell">
-            <div className="landing-rides-heading">
+            <div className="main-landing-rides-heading">
               <div>
-                <p>Choose your</p>
-                <h2>Perfect Ride</h2>
+                <h2 className="chooseBox">Choose your</h2>
+                <div className="perfectBox">
+                  <p>
+                    SimpliRide offers multiple vehicle options so you can select the ride that fits your journey. From quick city trips to spacious rides, choose the vehicle that matches your comfort and travel needs.
+                  </p>
+                  <h2>Perfect Ride</h2>
+                </div>
               </div>
-              <p>
-                Flexible choices, dependable comfort and safer city movement built for every kind of routine.
-              </p>
             </div>
 
             <div className="landing-ride-options">
-              {rideOptions.map((option) => (
-                <button key={option} type="button" className="landing-ride-pill">
-                  <span className="landing-ride-pill__icon" aria-hidden="true" />
-                  {option}
-                </button>
-              ))}
-            </div>
+              <div className="landing-ride-wrapper">
+                <div className="landing-ride-grid">
+                  {rideOptions.map((option, index) => (
+                    <article 
+                      key={option.id} 
+                      className={`landing-ride-card ${index === 0 ? 'active-card' : ''}`}
+                    >
+                      {/* Car Image */}
+                      <div className="landing-ride-card__image">
+                        <Image 
+                          src={option.icon} 
+                          alt={option.title} 
+                          width={100} 
+                          height={60} 
+                          style={{ objectFit: 'contain' }}
+                        />
+                      </div>
+                      
+                      {/* Features with Icons */}
+                      <div className="landing-ride-card__features">
+                        {option.features.map((feature, idx) => (
+                          <div key={idx} className="feature-item">
+                            <Image 
+                              src={feature.icon} 
+                              alt="" 
+                              width={14} 
+                              height={14} 
+                            />
+                            <span className="feature-text">{feature.text}</span>
+                          </div>
+                        ))}
+                      </div>
 
-            <div className="landing-safety-intro">
+                      {/* Bottom Title Pill */}
+                      <div className="landing-ride-card__footer">
+                        <button className="landing-ride-pill">
+                          {option.title}
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div> 
+            </div>
+            <div className="landing-section-copy">
               <div>
-                <p className="landing-section-copy__eyebrow">SimpliRide Safety First</p>
-                <h3>Your Safety always comes first without any compromise.</h3>
+                <p className="landing-section-copy__eyebrow">Stay Safe with Us</p>
+                <h2>Your Safety always comes first without any compromise.</h2>
               </div>
               <p>
-                Verified captains, monitored journeys and built-in support tools help every trip feel more dependable.
+                Safety is our top priority at SimpliRide, ensuring continuous support  from pre-ride to post-ride. Stay connected for a seamless journey, and  count on us for assistance whenever needed.
               </p>
             </div>
 
@@ -279,9 +410,22 @@ export function LandingPage() {
               <div className="landing-safety-photo">
                 <img src={assets.familySafety} alt="Parent securing child in car" />
               </div>
-              {safetyCards.map((card) => (
-                <MiniInfoCard key={card.title} title={card.title} text={card.text} />
-              ))}
+                  {safetyCards.map((card) => (
+                    <MiniInfoCard
+                      key={card.title}
+                      title={card.title}
+                      text={card.text}
+                      icon={
+                        <Image
+                          // Quotes ("") hata dein, direct variable names use karein
+                          src={card.icon === "Support" ? Support : Track} 
+                          alt={card.title}
+                          width={50}
+                          height={50}
+                        />
+                      }
+                    />
+                  ))}
             </div>
           </div>
         </section>
@@ -304,13 +448,16 @@ export function LandingPage() {
         <section className="landing-section landing-section--city">
           <div className="landing-shell landing-city-feature">
             <div className="landing-city-feature__image">
-              <img src={assets.cityCar} alt="SimpliRide electric vehicle in city" />
+              <Image 
+                src={assets.carRectangle} 
+                alt="Car Rectangle" 
+              />
             </div>
             <div className="landing-city-feature__content">
               <p className="landing-section-copy__eyebrow">Why Choose SimpliRide</p>
               <h2>Rides you can believe in</h2>
               <p>
-                Cleaner design, dependable pickups and service standards that make every city trip feel more refined.
+                As a company, we’re committed to achieving greater sustainability in our communities, creating safer places, and building valuable relations between drivers, riders, employees and the cities where we operate. To make this possible, all our activity is based on these principles, and we want to share them with you.
               </p>
               <a href="/register" className="landing-button landing-button--primary">
                 Get Ride with SimpliRide
@@ -321,19 +468,27 @@ export function LandingPage() {
 
         <section className="landing-section landing-section--style">
           <div className="landing-shell">
+            <div className="main-landing-rides-heading">
+              <div>
+                <h2 className="chooseBox">Sit back and</h2>
+                <div className="perfectBox">
+                  <p>
+                    From booking to destination, SimpliRide ensures a seamless travel experience. Our platform connects you with verified drivers and flexible ride options so every trip feels smooth, secure and stress-free.  
+                  </p>
+                  <h2>ride in style</h2>
+                </div>
+              </div>
+            </div>
             <div className="landing-style-heading">
               <div>
-                <p>Sit back and</p>
-                <h2>Ride in Style</h2>
+                <p>The SimpliRide Experience</p>
+                <h2>Where Comfort, Convenience and Reliability come together.</h2>
               </div>
-              <p>
-                Where comfort, convenience and reliability come together for everyday commutes and important meetings.
-              </p>
             </div>
 
             <div className="landing-style-grid">
               <div className="landing-style-photo">
-                <img src={assets.luxuryRide} alt="Passenger riding in comfort" />
+                <Image src={assets.userRide} alt="Passenger riding in comfort" />
               </div>
               {comfortCards.map((card) => (
                 <MiniInfoCard key={card.title} title={card.title} text={card.text} tone={card.tone} />
@@ -355,20 +510,20 @@ export function LandingPage() {
                 <a href="/" className="landing-store-badge">App Store</a>
               </div>
             </div>
-            <div className="landing-phone-cta__image-wrap">
-              <img src={assets.phoneLady} alt="Woman using SimpliRide app" className="landing-phone-cta__image" />
-              <div className="landing-phone-chip landing-phone-chip--one">Anytime</div>
-              <div className="landing-phone-chip landing-phone-chip--two">Safer Ride</div>
-              <div className="landing-phone-chip landing-phone-chip--three">Affordable</div>
-            </div>
+            
           </div>
         </section>
 
         <section className="landing-section landing-section--future">
           <div className="landing-shell landing-future">
-            <div className="landing-future__headline">
-              <p className="landing-section-copy__eyebrow">Ontime-Safe-Affordable</p>
-              <h2>The Future of ultimate ride service experience starts here</h2>
+            <div className="landing-section-copy">
+              <div>
+                <p className="landing-section-copy__eyebrow">A Better Way to Ride</p>
+                <h2>The Future of ultimate ride service experience starts here</h2>
+              </div>
+              <p>
+                Safety is our top priority at SimpliRide, ensuring continuous support  from pre-ride to post-ride. Stay connected for a seamless journey, and  count on us for assistance whenever needed.
+              </p>
             </div>
 
             <div className="landing-future__body">
@@ -385,7 +540,7 @@ export function LandingPage() {
                 ))}
               </div>
               <div className="landing-future__image">
-                <img src={assets.futureCar} alt="SimpliRide future car" />
+                <Image src={assets.futureCar} alt="SimpliRide future car" />
               </div>
             </div>
           </div>

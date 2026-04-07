@@ -56,29 +56,35 @@ img {
 }
 
 .landing-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid rgba(0, 50, 189, 0.08);
+ position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    -webkit-backdrop-filter: blur(14px);
+    /* backdrop-filter: blur(14px); */
+    background: rgba(255, 255, 255, 0);
 }
-
+main#top {
+    position: relative;
+    margin-top: -76px;
+}
 .landing-header__inner {
-  display: flex;
-  align-items: center;
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 86px;
+  min-height: 70px;
 }
 
 .landing-brand {
   display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #233562;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-left: 12px;
+    margin-top: 12px;
 }
 
 .landing-brand__mark {
@@ -95,6 +101,7 @@ img {
 .landing-nav {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 34px;
   color: #1f1f1f;
   font-size: 0.95rem;
@@ -109,18 +116,84 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  justify-content: end;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
-.landing-button {
-  display: inline-flex;
-  align-items: center;
+.landing-nav {
+  /* ... display flex, justification etc ... */
+  flex: 1;
+  display: flex;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 24px;
-  border-radius: 999px;
-  font-size: 0.96rem;
-  font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-items: center;
+  gap: 25px;
+  background-color: #fff; /* Dark color */
+  height: 50px;
+  position: relative;
+  z-index: 1; /* Navigation contents are above the notch wings */
+  
+  /* --- KEY RADIUS CHANGE --- */
+  /* Top corners are FLAT (0). Bottom corners are ROUNDED (25px) */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 0 !important; /* Top flat */
+  border-top-right-radius: 0 !important; /* Top flat */
+}
+
+/* LEFT Notch Wing (Curved inward) */
+.landing-nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20px; /* Adjust spacing to meet the main body */
+  width: 40px;
+  height: 100%;
+  background-color: #fff;
+  
+  /* Skew direction towards center (30deg) */
+  transform: skewX(30deg); 
+  
+  /* Radius on inner edge, creates inward curve from center top */
+  /* This curve starts from top-left, dips inward on the bottom right of this pseudo element. Standard radius can't curve 'inward'. But we can make the outer corner flat. */
+  
+  /* Make the outer, upper corner rounded for soft entry. The inner bottom one is sharp, but we'll hide it. */
+  border-bottom-left-radius: 20px;
+  z-index: -1; /* Place wings behind main body content */
+}
+
+/* RIGHT Notch Wing (Curved inward) */
+.landing-nav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -20px; /* Adjust spacing to meet the main body */
+  width: 40px;
+  height: 100%;
+  background-color: #fff;
+  
+  /* Skew direction towards center (-30deg) */
+  transform: skewX(-30deg); 
+  
+  /* Radius on inner edge, creates inward curve from center top */
+  /* Radius only on the OUTER-TOP corner for a smooth entry, inner edge is sharp but connects to main body */
+  border-bottom-right-radius: 20px;
+  z-index: -1; /* Place wings behind main body content */
+}
+a.landing-brand img {
+    width: 180px;
+    height: auto;
+}
+.landing-button {
+      display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .landing-button:hover {
@@ -130,9 +203,17 @@ img {
 .landing-button--primary {
   color: #fff;
   background: linear-gradient(135deg, #0032bd, #1145de);
-  box-shadow: 0 14px 30px rgba(0, 50, 189, 0.24);
 }
-
+header.landing-header:before {
+    content: "";
+    width: 100%;
+    height: 10px;
+    background: transparent;
+    position: absolute;
+}
+header.landing-header {
+    position: relative;
+}
 .landing-button--secondary {
   color: var(--landing-primary);
   background: #fff;
@@ -201,24 +282,25 @@ img {
 }
 
 .landing-hero-figma__eyebrow {
-  color: var(--landing-primary);
-  font-size: 2.1rem;
-  font-weight: 300;
+  color: #1F1F1F;
+    font-size: 60px;
+    font-weight: 300;
 }
 
 .landing-hero-figma__content h1 {
   margin-top: 4px;
-  color: var(--landing-primary);
-  font-size: clamp(3rem, 5.8vw, 5.2rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
+    color: var(--landing-primary);
+    font-size: clamp(3rem, 5.8vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+    font-style: italic;
 }
 
 .landing-hero-figma__subtext {
   width: min(100%, 620px);
   margin: 16px auto 0;
-  color: #31405f;
-  font-size: 1rem;
+  color: #1F1F1F;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -228,9 +310,7 @@ img {
   gap: 10px;
   width: min(100%, 760px);
   margin: 28px auto 0;
-  padding: 8px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 18px 38px rgba(0, 50, 189, 0.11);
 }
 
@@ -242,7 +322,7 @@ img {
 }
 
 .landing-booking-form input {
-  padding: 0 18px;
+  padding:20px 18px;
   color: #1f1f1f;
   border: 1px solid rgba(0, 50, 189, 0.1);
   background: #ffffff;
@@ -294,22 +374,30 @@ img {
   left: 18px;
   bottom: 18px;
   width: 330px;
-  height: 255px;
+  height: 280px;
   overflow: hidden;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
   z-index: 5;
+  padding: 8px;
 }
 
 .landing-hero-card__image,
 .landing-hero-card__overlay {
   position: absolute;
-  inset: 8px;
+  left: 0px;
   border-radius: 22px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+    
 }
-
+.heroCardImage {
+    position: relative;
+    padding-bottom: 18px;
+}
 .landing-hero-card__overlay {
   background: rgba(0, 49, 178, 0.4);
 }
@@ -345,6 +433,7 @@ img {
   gap: 10px;
   margin: 22px 18px 0;
   font-size: 0.9rem;
+  justify-content: center;
 }
 
 .landing-hero-card__avatars {
@@ -372,7 +461,7 @@ img {
   gap: 34px;
   padding: 22px 28px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
   backdrop-filter: blur(8px);
   z-index: 5;
 }
@@ -780,7 +869,7 @@ article.landing-mini-card {
     gap: 24px;
     padding: 40px 35px 226px 40px;
     border-radius: 20px;
-    background: url(/_next/static/media/mobileApplication.e46e364e.png) no-repeat;
+    background: url(../assets/mobileApplication32.png) no-repeat;
     background-size: 100%;
 }
 
@@ -916,14 +1005,21 @@ article.landing-mini-card {
 
 .landing-footer__grid {
     grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
-    padding: 80px 60px;
+    padding: 80px 60px 0px;
     border-radius: 28px;
-    background: url(../assets/footerBg.png) no-repeat;
+    background: url(../assets/footerDesign.png) no-repeat;
     background-size: 100%;
     box-shadow: var(--landing-shadow);
-    height: 650px;
+    height: 635px;
+    margin-bottom: 20px;
 }
-
+.footer-visual-bottom {
+    position: absolute;
+    z-index: 9999;
+    bottom: 40px;
+    left: 40px;
+    font-size: 14px;
+}
 .landing-brand--footer,
 .landing-footer h3,
 .landing-footer a {
@@ -952,6 +1048,7 @@ article.landing-mini-card {
   color: white;
   border-radius: 40px;
   overflow: hidden;
+  position: relative;
 }
 
 

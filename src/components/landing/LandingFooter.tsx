@@ -5,10 +5,12 @@ import { FaXTwitter } from "react-icons/fa6";
 
 // 1. Image import hamesha curly braces ke baghair hota hai agar default export ho
 import footerBg from "../../assets/footerBg.png";
+import footerLogo from "../../assets/mainFooterLogo.png";
 
 // 2. Assets object mein direct variable pass karein, string nahi
 const assets = {
-  footerBg: footerBg
+  footerBg: footerBg,
+  footerLogo: footerLogo
 };
 
 // 3. footerLinks object yahan define hona chahiye agar upar nahi hai
@@ -30,7 +32,7 @@ export function LandingFooter() {
         <div className="landing-footer__grid">
           <div className="footer-brand-section">
             <a href="#top" className="landing-brand">
-              <span>simpliride</span>
+              <Image src={assets.footerLogo} alt="" aria-hidden="true" className="headerLogo" />
             </a>
             <div className="social-icons-row">
               <span className="icon-circle"><FaFacebookF /></span>
@@ -64,8 +66,6 @@ export function LandingFooter() {
 
         {/* BOTTOM SECTION: Big Text & Car */}
         <div className="footer-visual-bottom">
-          
-          <h1 className="footer-giant-text">simpliride</h1>
           <div className="footer-copyright-row">
             <p>©2024 - 2026 SimpliRide | All Rights Reserved</p>
           </div>

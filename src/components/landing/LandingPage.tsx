@@ -272,10 +272,12 @@ export function LandingPage() {
             <div className="landing-hero-badge landing-hero-badge--secure">Secure Ride</div>
 
             <div className="landing-hero-card">
+              <div className="heroCardImage">
               <img src={assets.heroCardImage} alt="Trusted by thousands" className="landing-hero-card__image" />
               <div className="landing-hero-card__overlay" />
               <span className="landing-hero-card__brand">SimpliRide</span>
               <h2>Trusted by Thousands People</h2>
+              </div>
               <div className="landing-hero-card__rating">
                 <div className="landing-hero-card__avatars">
                   <span />
